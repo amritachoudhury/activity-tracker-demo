@@ -1,0 +1,25 @@
+<div class="container">
+<h2 class="header-deco">Fresco PLAY Activity Center</h2>
+<mat-label *ngIf = "!newActivityList.length" class="header-deco">
+  No Activities to track! Start by adding one
+</mat-label><br />
+
+<div *ngFor = "let newActivity of newActivityList; let i=index">
+  <mat-checkbox [(ngModel)] = "newActivity.checked" [checked] = "newActivity.checked">
+    {{newActivity.value}}
+  </mat-checkbox>
+</div>
+<mat-form-field appearance = "outline">
+  <input matInput [(ngModel)] = "newActivity" />
+</mat-form-field><br />
+<button mat-stroked-button (click)="addMore()">Add an Activity</button>
+<button class="second-button" mat-stroked-button (click)="clearAll()">
+  Clear All
+</button><br /><br />
+<mat-label *ngIf = "done" class="error-message header-deco">
+  Activity Already Exists!
+</mat-label>
+<mat-label *ngIf = "error" class="error-message header-deco">
+  Activity Cannot be Blank!
+</mat-label>
+</div>
