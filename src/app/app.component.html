@@ -1,25 +1,40 @@
 <div class="container">
 <h2 class="header-deco">Fresco PLAY Activity Center</h2>
+<div *ngFor = "let activity of newActivityList; let i = index">
+  <mat-checkbox [(ngModel)] = "activity.checked" (change) = "checkActivity($event)">
+   {{i+1}}. {{activity.value}}
+   <span *ngIf = "activity.checked" style="font-display: initial ; color: red">
+    Selected
+  </span>
+  </mat-checkbox>
+</div>
 <mat-label *ngIf = "!newActivityList.length" class="header-deco">
   No Activities to track! Start by adding one
 </mat-label><br />
-
-<div *ngFor = "let newActivity of newActivityList; let i=index">
-  <mat-checkbox [(ngModel)] = "newActivity.checked" [checked] = "newActivity.checked">
-    {{newActivity.value}}
-  </mat-checkbox>
-</div>
 <mat-form-field appearance = "outline">
   <input matInput [(ngModel)] = "newActivity" />
 </mat-form-field><br />
-<button mat-stroked-button (click)="addMore()">Add an Activity</button>
+<button mat-stroked-button (click) = "addMore()">
+  Add an Activity
+</button>
 <button class="second-button" mat-stroked-button (click)="clearAll()">
   Clear All
+</button><br />
+<button class="bottom-left-button" mat-stroked-button (click)="showActivityList()">
+  Show Selected Activities
 </button><br /><br />
 <mat-label *ngIf = "done" class="error-message header-deco">
   Activity Already Exists!
 </mat-label>
 <mat-label *ngIf = "error" class="error-message header-deco">
   Activity Cannot be Blank!
+</mat-label>
+<div *ngFor="let selectedActivity of selectedActivityArr; let i = index" class="bottom-left-button">
+  <mat-label>
+    {{i + 1}}. {{selectedActivity}}
+  </mat-label>
+</div>
+<mat-label *ngIf = "notSelected" class="error-message header-deco">
+  No Activity Selected!
 </mat-label>
 </div>
