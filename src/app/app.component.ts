@@ -63,14 +63,6 @@ export class AppComponent {
     console.log(this.selectedActivityArr);
   }
 
-  public checkActivity(evt: any) {
-    console.log(this.newActivityList);
-    console.log(evt.source._elementRef.nativeElement.innerText);
-    console.log(evt.checked);
-    console.log(evt);
-    if (evt.checked) { this.strikeFlag = true; } else { this.strikeFlag = false; }
-  }
-
   public clearAll() {
     this.notSelected = false;
     this.selectedActivityArr = [];

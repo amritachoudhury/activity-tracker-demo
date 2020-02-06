@@ -1,11 +1,8 @@
 <div class="container">
 <h2 class="header-deco">Fresco PLAY Activity Center</h2>
-<div *ngFor = "let activity of newActivityList; let i = index">
-  <mat-checkbox [(ngModel)] = "activity.checked" (change) = "checkActivity($event)">
-   {{i+1}}. {{activity.value}}
-   <span *ngIf = "activity.checked" style="font-display: initial ; color: red">
-    Selected
-  </span>
+<div *ngFor = "let activity of newActivityList;">
+  <mat-checkbox [(ngModel)] = "activity.checked" [ngClass]="{'fontRed': activity.checked}">
+   {{activity.id }}. {{activity.value}} 
   </mat-checkbox>
 </div>
 <mat-label *ngIf = "!newActivityList.length" class="header-deco">
